@@ -4,7 +4,6 @@ import Layout from "@/components/Layout";
 import {
   createVoiceRecorder,
   interpretDreamWithOpenAI,
-  isOpenAIConfigured,
   speakWithOpenAI,
   transcribeWithOpenAI,
 } from "@/lib/openaiService";
@@ -74,11 +73,6 @@ const DreamInterpretation = () => {
       setError("Describe your dream in a little more detail (at least a few sentences).");
       return;
     }
-    if (!isOpenAIConfigured()) {
-      setError("OpenAI is not configured. Add VITE_OPENAI_API_KEY to .env and restart the app.");
-      return;
-    }
-
     setLoading(true);
     try {
       const reading = await interpretDreamWithOpenAI(text);
@@ -112,11 +106,6 @@ const DreamInterpretation = () => {
       } finally {
         setTranscribing(false);
       }
-      return;
-    }
-
-    if (!isOpenAIConfigured()) {
-      setError("OpenAI is not configured. Add VITE_OPENAI_API_KEY to .env and restart the app.");
       return;
     }
 
