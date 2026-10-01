@@ -1,22 +1,23 @@
-import { OPENAI_CONFIG } from "./config";
 import type { PalmAnalysisResult } from "./apiService";
 
-/** Client key preferred; nginx may also inject Authorization on the proxy. */
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY?.trim() || "";
+
+const OPENAI_BASE_URL =
+  import.meta.env.VITE_OPENAI_BASE_URL?.trim() || "https://api.openai.com";
+
 export function isOpenAIConfigured(): boolean {
-  return Boolean(OPENAI_CONFIG.API_KEY?.trim());
+  return true;
 }
 
 function openaiUrl(path: string): string {
   const p = path.startsWith("/") ? path : `/${path}`;
-  return `${OPENAI_CONFIG.BASE_URL}${p}`;
+  return `${OPENAI_BASE_URL}${p}`;
 }
 
 function openaiHeaders(json = true): HeadersInit {
   const headers: Record<string, string> = {};
   if (json) headers["Content-Type"] = "application/json";
-  if (OPENAI_CONFIG.API_KEY?.trim()) {
-    headers.Authorization = `Bearer ${OPENAI_CONFIG.API_KEY.trim()}`;
-  }
+  headers.Authorization = `Bearer ${OPENAI_API_KEY}`;
   return headers;
 }
 
@@ -49,15 +50,11 @@ async function chatCompletion(
   messages: Array<{ role: string; content: string | Array<Record<string, unknown>> }>,
   maxTokens = 4000,
 ): Promise<string> {
-  if (!isOpenAIConfigured()) {
-    throw new Error("OpenAI API key is not configured. Add VITE_OPENAI_API_KEY to .env");
-  }
-
   const response = await fetch(openaiUrl("/v1/chat/completions"), {
     method: "POST",
     headers: openaiHeaders(true),
     body: JSON.stringify({
-      model: OPENAI_CONFIG.MODEL,
+      model: import.meta.env.VITE_OPENAI_MODEL || "gpt-4o-mini",
       max_tokens: maxTokens,
       messages,
     }),
@@ -137,7 +134,7 @@ function normalizePalmResult(raw: Record<string, unknown>): PalmAnalysisResult {
     ...(raw as unknown as PalmAnalysisResult),
     overallScore: Number(raw.overallScore) || 85,
     summary: String(raw.summary || ""),
-    modelVersion: OPENAI_CONFIG.MODEL,
+    modelVersion: import.meta.env.VITE_OPENAI_MODEL || "gpt-4o-mini",
     accuracy,
   };
 }
@@ -302,7 +299,7 @@ Return ONLY raw valid JSON (no markdown, no code blocks) using EXACTLY these sna
     {"sign": "Pisces", "match": 0.79, "type": "Harmonious"}
   ],
   "lucky_numbers": [3, 7, 12, 21, 33],
-  "model_version": "${OPENAI_CONFIG.MODEL}"
+  "model_version": "gpt-4o-mini"
 }
 Replace ALL placeholder values with REAL analysis based on the actual birth data provided.`;
 
@@ -365,10 +362,6 @@ export async function speakWithOpenAI(
   text: string,
   options?: { voice?: string },
 ): Promise<string> {
-  if (!isOpenAIConfigured()) {
-    throw new Error("OpenAI API key is not configured. Add VITE_OPENAI_API_KEY to .env");
-  }
-
   const cleaned = text.replace(/\s+/g, " ").trim().slice(0, 4000);
   if (!cleaned) throw new Error("Nothing to speak");
 
@@ -376,8 +369,8 @@ export async function speakWithOpenAI(
     method: "POST",
     headers: openaiHeaders(true),
     body: JSON.stringify({
-      model: OPENAI_CONFIG.TTS_MODEL,
-      voice: options?.voice || OPENAI_CONFIG.TTS_VOICE,
+      model: import.meta.env.VITE_OPENAI_TTS_MODEL || "tts-1",
+      voice: options?.voice || (import.meta.env.VITE_OPENAI_TTS_VOICE || "nova"),
       input: cleaned,
       response_format: "mp3",
     }),
@@ -397,14 +390,10 @@ export async function speakWithOpenAI(
 
 /** Transcribe microphone audio with OpenAI Whisper / gpt-4o-transcribe. */
 export async function transcribeWithOpenAI(audioBlob: Blob): Promise<string> {
-  if (!isOpenAIConfigured()) {
-    throw new Error("OpenAI API key is not configured. Add VITE_OPENAI_API_KEY to .env");
-  }
-
   const form = new FormData();
   const ext = audioBlob.type.includes("mp4") ? "mp4" : "webm";
   form.append("file", audioBlob, `astra-voice.${ext}`);
-  form.append("model", OPENAI_CONFIG.STT_MODEL);
+  form.append("model", import.meta.env.VITE_OPENAI_STT_MODEL || "whisper-1");
   form.append("language", "en");
 
   const response = await fetch(openaiUrl("/v1/audio/transcriptions"), {
