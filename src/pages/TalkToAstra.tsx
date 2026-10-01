@@ -4,7 +4,6 @@ import Layout from "@/components/Layout";
 import {
   askAstraWithOpenAI,
   createVoiceRecorder,
-  isOpenAIConfigured,
   speakWithOpenAI,
   transcribeWithOpenAI,
 } from "@/lib/openaiService";
@@ -57,7 +56,6 @@ const TalkToAstra = () => {
 
   const playSpeech = useCallback(
     async (text: string, id: number) => {
-      if (!isOpenAIConfigured()) return;
       stopSpeaking();
       setSpeakingId(id);
       try {
@@ -84,11 +82,6 @@ const TalkToAstra = () => {
   const sendText = async (text: string) => {
     const trimmed = text.trim();
     if (!trimmed || loading) return;
-
-    if (!isOpenAIConfigured()) {
-      setError("OpenAI is not configured. Add VITE_OPENAI_API_KEY to .env and restart the app.");
-      return;
-    }
 
     setError(null);
     setInput("");
@@ -136,11 +129,6 @@ const TalkToAstra = () => {
       } finally {
         setTranscribing(false);
       }
-      return;
-    }
-
-    if (!isOpenAIConfigured()) {
-      setError("OpenAI is not configured. Add VITE_OPENAI_API_KEY to .env and restart the app.");
       return;
     }
 
