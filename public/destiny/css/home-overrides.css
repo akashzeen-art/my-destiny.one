@@ -1,0 +1,195 @@
+/* Resets so <button> matches reference <a class="menu_button|category_button"> */
+.destiny-home-root button.menu_button,
+.destiny-home-root button.category_button {
+  background: transparent;
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.destiny-home-root button.category_button {
+  color: #ababb5;
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 16px 0;
+  box-sizing: border-box;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 992px) {
+  .destiny-home-root button.category_button {
+    font-size: 14px;
+    padding: 20px 0;
+  }
+}
+
+.destiny-home-root button.menu_button {
+  width: 100%;
+  display: block;
+  padding: 8px 0;
+  color: #ababb5;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 3px 3px rgb(0 0 0 / 16%);
+  font-size: inherit;
+}
+
+@media screen and (min-width: 992px) {
+  .destiny-home-root button.menu_button {
+    font-size: 20px;
+  }
+}
+
+.destiny-home-root button.menu_button:hover,
+.destiny-home-root button.menu_button:active,
+.destiny-home-root button.menu_button:focus {
+  color: #c7b59e;
+}
+
+html.destiny-home,
+body.destiny-home {
+  background: #0d0417 !important;
+  margin: 0;
+  min-height: 100%;
+}
+
+body.destiny-home.destiny-menu-open {
+  overflow: hidden;
+}
+
+/* Hide app chrome leftovers on destiny home */
+body.destiny-home .cosmic-bg-root {
+  display: none !important;
+}
+
+/*
+ * Burger menu — do NOT use Bootstrap `.collapse` (conflicts with Tailwind
+ * utility `visibility: collapse`).
+ */
+.destiny-home-root .destiny-nav-drawer {
+  display: none;
+}
+
+.destiny-home-root .destiny-nav-drawer.is-open {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.destiny-home-root .destiny-nav-drawer.is-open > .bg-dark {
+  background-color: #0d0417 !important;
+  background-image: url("/destiny/images/small_stars.png");
+  min-height: 100%;
+  text-align: center;
+  padding-bottom: 48px;
+}
+
+.destiny-home-root .destiny-nav-chrome {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100001;
+  pointer-events: none;
+}
+
+.destiny-home-root .destiny-nav-chrome .top_logo {
+  pointer-events: auto;
+}
+
+.destiny-home-root .destiny-nav-chrome .navbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100002;
+  background: none !important;
+  pointer-events: auto;
+}
+
+.destiny-home-root .destiny-nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.destiny-home-root .destiny-profile-btn {
+  background: transparent;
+  border: 1px solid rgba(199, 181, 158, 0.55);
+  color: #c7b59e;
+  font-family: var(--initial-font), "Josefin Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.destiny-home-root .destiny-profile-btn:hover,
+.destiny-home-root .destiny-profile-btn:focus {
+  color: #fff;
+  border-color: #c7b59e;
+  outline: none;
+}
+
+@media screen and (min-width: 576px) {
+  .destiny-home-root .destiny-profile-btn {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+}
+
+.destiny-home-root .destiny-nav-chrome .navbar-toggler {
+  border: none;
+  color: #ababb5;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+}
+
+.destiny-home-root .destiny-nav-chrome .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.destiny-home-root .destiny-nav-chrome .custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255 255 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.destiny-home-root .destiny-nav-chrome .navbar-toggler[aria-expanded="true"] {
+  position: fixed;
+  top: 8px;
+  right: 12px;
+  z-index: 100003;
+}
+
+.destiny-home-root .destiny-nav-chrome .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  background: url(/destiny/images/x.png);
+  filter: invert(1) grayscale(100%) brightness(200%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

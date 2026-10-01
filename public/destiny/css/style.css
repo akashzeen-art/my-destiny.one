@@ -1,0 +1,2424 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+@font-face {
+    font-family: 'calypsoregular';
+    src: url('/destiny/fonts/calypso-webfont.eot');
+    src: url('/destiny/fonts/calypso-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/destiny/fonts/calypso-webfont.woff2') format('woff2'),
+         url('/destiny/fonts/calypso-webfont.woff') format('woff'),
+         url('/destiny/fonts/calypso-webfont.ttf') format('truetype'),
+         url('/destiny/fonts/calypso-webfont.svg#calypsoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+:root {
+  --initial-font: 'Josefin Sans', sans-serif;
+  --landing-title: 'calypsoregular', sans-serif;
+}
+html
+{
+  background: #0D0417;
+  min-height: 100vh;
+  height: 100%;
+}
+/* Base */
+body {
+  line-height: 1.7;
+  font-family: var(--initial-font);
+  font-weight: 300;
+  font-size: 1rem;
+  background: none;
+  position: relative;
+  color: #ABABB5;
+  min-height: 100%;
+}
+
+::-moz-selection {
+  background: #000;
+  color: #ABABB5;
+}
+
+::selection {
+  background: #000;
+  color: #ABABB5;
+}
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  -moz-transition: .3s all ease;
+  transition: .3s all ease;
+  text-decoration: none;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  cursor: pointer !important;
+}
+a:hover {
+  color: #ABABB5;
+  text-decoration: none
+}
+
+.italic
+{
+  font-style: italic;
+}
+.index0{z-index:  0;}
+.index1{z-index:  1;}
+.index2{z-index:  2;}
+.index3{z-index:  3;}
+.index4{z-index:  4;}
+.index5{z-index:  5;}
+
+.navbar
+{
+  font-family: var(--initial-font);
+  font-weight: 900;
+  color: #ABABB5;
+}
+.navbar-dark .navbar-nav .nav-link
+{
+  color: #ABABB5;
+  border-bottom: 2px solid rgb(255 255 255 / 0%);
+}
+.navbar-dark .navbar-nav .nav-link:hover
+{
+  color: #ABABB5;
+  border-bottom: 2px solid #FA43C6;
+}
+.navbar-dark .navbar-nav .nav-active
+{
+  color: #ABABB5;
+  border-bottom: 2px solid #FA43C6;
+}
+.btn {
+  font-size: 16px;
+  -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+          border-radius: 30px;
+  padding: 10px 30px;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+       box-shadow: none !important;
+}
+.btn.btn-primary
+{
+  border-width: 2px;
+  background: #00d2b5;
+  border-color: #00d2b5;
+  color: #ABABB5;
+  -webkit-box-shadow: 0 4px 20px -5px rgba(0, 210, 181, 0.4);
+  -moz-box-shadow: 0 4px 20px -5px rgba(0, 210, 181, 0.4);
+       box-shadow: 0 4px 20px -5px rgba(0, 210, 181, 0.4);
+}
+.btn.btn-primary:hover
+{
+  background: #6d2b75;
+  border-color: #6d2b75;
+  color: #ABABB5;
+}
+
+
+.relative
+{
+  position: relative;
+}
+.logo
+{
+    max-width: 140px;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+}
+
+button.button
+{
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fe9f45+0,fe9f45+100 */
+    background: rgb(254,159,69); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(254,159,69,1) 0%, rgba(254,159,69,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(254,159,69,1) 0%,rgba(254,159,69,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear,  left top, left bottom,  from(rgba(254,159,69,1)),to(rgba(254,159,69,1)));
+    background: -moz-linear-gradient(top,  rgba(254,159,69,1) 0%,rgba(254,159,69,1) 100%);
+    background: -o-linear-gradient(top,  rgba(254,159,69,1) 0%,rgba(254,159,69,1) 100%);
+    background: linear-gradient(to bottom,  rgba(254,159,69,1) 0%,rgba(254,159,69,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe9f45', endColorstr='#fe9f45',GradientType=0 ); /* IE6-9 */
+    border: none;
+    color: #ABABB5;
+    text-transform: uppercase;
+    font-size: 15px;
+    width: 100%;
+    padding: 14px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.legal
+{
+  font-size: 10px;
+  font-weight: 700;
+  font-style: italic;
+  color: #ABABB5;
+  margin:auto;
+  text-align: center
+}
+.container
+{
+  max-width: 1140px;
+}
+
+.navbar-dark .navbar-toggler
+{
+  border: none;
+  color: #ABABB5;
+  cursor: pointer;
+}
+.navbar-toggler:focus
+{
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+.navbar-dark .navbar-toggler[aria-expanded="true"]
+{
+  position: fixed;
+  top: 8px;
+  right: 12px;
+}
+.navbar-dark .navbar-toggler[aria-expanded="false"] .navbar-toggler-icon
+{
+
+}
+.navbar-dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon
+{
+    background: url(/destiny/images/x.png);
+    -webkit-filter: invert(1) grayscale(100%) brightness(200%);
+            filter: invert(1) grayscale(100%) brightness(200%);
+    background-repeat: no-repeat;
+    -moz-background-size: cover;
+            -webkit-background-size: cover;
+                 -o-background-size: cover;
+            background-size: cover;
+    background-position: center;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #ABABB5;
+}
+.stars {
+  background:url(/destiny/images/small_stars.png) repeat top center;
+}
+
+.stars{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.chinese_horoscope,.chinese_horoscope_big
+{
+  width: auto;
+  height: 120px;
+  margin: auto;
+}
+.signs:hover,.chinese_horoscope:hover
+{
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+.sign_name,.horoscope_name
+{
+  color: #ABABB5;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.top_logo
+{
+  position: relative;
+}
+@-webkit-keyframes rot {
+  100%{
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg)
+  }
+}
+@-moz-keyframes rot {
+  100%{
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg)
+  }
+}
+@-o-keyframes rot {
+  100%{
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+     transform: rotate(360deg)
+  }
+}
+@keyframes rot {
+  100%{
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+     transform: rotate(360deg)
+  }
+}
+.main
+{
+  background: url('/destiny/images/bg.jpg');
+}
+.main:after
+{
+    content: '';
+    display: block;
+    height: 100px;
+    left: 0;
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    z-index: 9;
+    background-image: url('/destiny/images/bottom.png');
+    background-repeat: no-repeat;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+.main_2
+{
+  background: url('/destiny/images/bg.jpg');
+}
+.zodiac_box
+{
+  right: 0;
+  width: 40%;
+  height: 95vh;
+  overflow: hidden;
+  bottom: 0;
+  margin: auto;
+}
+.zodiac-main
+{
+  height: 100vh;
+  width: 100vh;
+}
+.zodiac-main:before
+{
+  content: "";
+  position: absolute;
+  background: url('/destiny/images/zodiac_main.png');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-animation: rot 50s infinite;
+  -moz-animation: rot 50s infinite;
+  -o-animation: rot 50s infinite;
+     animation: rot 50s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+     animation-timing-function: linear;
+  height: 100vh;
+  display: block;
+  width: 100vh;
+}
+.head-girl
+{
+  background: url('/destiny/images/head.png');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  z-index: 4;
+  position: absolute;
+  background-position: 90px top;
+  background-repeat: no-repeat;
+}
+.womanface
+{
+  background: url('/destiny/images/face.png');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  z-index: 1;
+  position: absolute;
+  background-position: 90px top;
+  background-repeat: no-repeat;
+}
+.flowers
+{
+  background: url('/destiny/images/flowers.png');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  z-index: 2;
+  position: absolute;
+  height: 80vh;
+  width: 710px;
+  background-position: 90px top;
+  background-repeat: no-repeat;
+  opacity: 0;
+  right: 0;
+  bottom: 3vh;
+  -webkit-animation-delay:0.5s;
+  -moz-animation-delay:0.5s;
+  -o-animation-delay:0.5s;
+     animation-delay:0.5s;
+  }
+.planets
+{
+  background: url('/destiny/images/planets.png');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  z-index: 2;
+  position: absolute;
+  height: 80vh;
+  width: 710px;
+  bottom: 3vh;
+  right: 0;
+  background-position: 90px top;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+.cards
+{
+  background: url('/destiny/images/cards.png');
+  -moz-background-size: 96%;
+  -webkit-background-size: 96% 96%;
+       -o-background-size: 96%;
+          background-size: 96%;
+  z-index: 10;
+  position: absolute;
+  background-position: 75px 0;
+  background-repeat: no-repeat;
+}
+.blooming
+{
+  -webkit-transform: scale(0);
+     -moz-transform: scale(0);
+      -ms-transform: scale(0);
+       -o-transform: scale(0);
+          transform: scale(0);
+          transition-property: -moz-transform;
+          -webkit-animation-iteration-count: 1;
+             -moz-animation-iteration-count: 1;
+                  -o-animation-iteration-count: 1;
+             animation-iteration-count: 1;
+          -webkit-animation-name: grow;
+             -moz-animation-name: grow;
+                  -o-animation-name: grow;
+             animation-name: grow;
+          -webkit-animation-duration: 0.5s;
+             -moz-animation-duration: 0.5s;
+                  -o-animation-duration: 0.5s;
+             animation-duration: 0.5s;
+          -webkit-animation-timing-function: linear;
+             -moz-animation-timing-function: linear;
+                  -o-animation-timing-function: linear;
+             animation-timing-function: linear;
+                  -webkit-animation-fill-mode: forwards;
+                     -moz-animation-fill-mode: forwards;
+                          -o-animation-fill-mode: forwards;
+                     animation-fill-mode: forwards;
+}
+.shrink
+{
+          -webkit-animation: shrink 0.5s forwards;
+          -moz-animation: shrink 0.5s forwards;
+          -o-animation: shrink 0.5s forwards;
+             animation: shrink 0.5s forwards;
+}
+
+@-webkit-keyframes grow {
+  from {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+     right: 0
+   }
+}
+
+@-moz-keyframes grow {
+  from {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+     right: 0
+   }
+}
+
+@-o-keyframes grow {
+  from {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+     right: 0
+   }
+}
+
+@keyframes grow {
+  from {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+     right: 0
+   }
+}
+@-webkit-keyframes shrink {
+  from {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    right: 0
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+   }
+}
+@-moz-keyframes shrink {
+  from {
+
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    right: 0
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+   }
+}
+@-o-keyframes shrink {
+  from {
+
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    right: 0
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+   }
+}
+@keyframes shrink {
+  from {
+
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    right: 0
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+   }
+}
+.fly
+{
+  /* start at 0 so they don't appear while loading */
+  -webkit-animation-fill-mode: forwars;
+  -moz-animation-fill-mode: forwars;
+  -o-animation-fill-mode: forwars;
+     animation-fill-mode: forwars;
+  -webkit-animation: fly 4s linear;
+  -moz-animation: fly 4s linear;
+  -o-animation: fly 4s linear;
+     animation: fly 4s linear;
+  -webkit-animation-delay:0.7s;
+  -moz-animation-delay:0.7s;
+  -o-animation-delay:0.7s;
+     animation-delay:0.7s;
+}
+.butterfly {
+  z-index: 1;
+  position: absolute;
+  margin: auto;
+  opacity: 0;
+}
+.butterfly:nth-child(2) {
+  -webkit-animation-delay: 0.4s;
+     -moz-animation-delay: 0.4s;
+          -o-animation-delay: 0.4s;
+     animation-delay: 0.4s;
+}
+.butterfly:nth-child(2) .butterfly-turn {
+  -webkit-animation-delay: 0.75s;
+     -moz-animation-delay: 0.75s;
+          -o-animation-delay: 0.75s;
+     animation-delay: 0.75s;
+}
+.butterfly:nth-child(2) .butterfly-turn .butterfly-flutter {
+  -webkit-transform: scale(0.7) rotateX(65deg);
+     -moz-transform: scale(0.7) rotateX(65deg);
+          transform: scale(0.7) rotateX(65deg);
+}
+.butterfly:nth-child(3) {
+  -webkit-animation-delay: 0.75s;
+     -moz-animation-delay: 0.75s;
+          -o-animation-delay: 0.75s;
+     animation-delay: 0.75s;
+}
+.butterfly:nth-child(3) .butterfly-turn {
+  -webkit-animation-delay: 1.25s;
+     -moz-animation-delay: 1.25s;
+          -o-animation-delay: 1.25s;
+     animation-delay: 1.25s;
+}
+.butterfly:nth-child(3) .butterfly-turn .butterfly-flutter {
+  -webkit-transform: scale(0.3) rotateX(45deg);
+     -moz-transform: scale(0.3) rotateX(45deg);
+          transform: scale(0.3) rotateX(45deg);
+}
+.butterfly .butterfly-turn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px;
+  height: 150px;
+  -webkit-perspective: 1000px;
+     -moz-perspective: 1000px;
+          perspective: 1000px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  -webkit-transform-origin: 50% 80%;
+     -moz-transform-origin: 50% 80%;
+      -ms-transform-origin: 50% 80%;
+       -o-transform-origin: 50% 80%;
+          transform-origin: 50% 80%;
+  /* turn from a natural center */
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+     animation-fill-mode: both;
+  -webkit-animation: turn 3s infinite cubic-bezier(0.31, 0.09, 0.77, 1.5);
+     -moz-animation: turn 3s infinite cubic-bezier(0.31, 0.09, 0.77, 1.5);
+          -o-animation: turn 3s infinite cubic-bezier(0.31, 0.09, 0.77, 1.5);
+     animation: turn 3s infinite cubic-bezier(0.31, 0.09, 0.77, 1.5);
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-filter: drop-shadow(50px 30px 10px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(50px 30px 10px rgba(0, 0, 0, 0.5));
+}
+
+.butterfly-flutter {
+  width: 2rem;
+  height: 8rem;
+  position: relative;
+  top: 0;
+  margin: 0 auto;
+  background: url("/destiny/images/butterfly-body.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  -moz-background-size: contain;
+       -webkit-background-size: contain;
+            -o-background-size: contain;
+          background-size: contain;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(25deg) rotateY(5deg);
+     -moz-transform: rotateX(25deg) rotateY(5deg);
+          transform: rotateX(25deg) rotateY(5deg);
+}
+.butterfly-flutter::before, .butterfly-flutter::after {
+  position: absolute;
+  top: 5%;
+  margin: auto;
+  content: "";
+  height: 100%;
+  width: 250%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -moz-background-size: contain;
+       -webkit-background-size: contain;
+            -o-background-size: contain;
+          background-size: contain;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation-delay: 0;
+     -moz-animation-delay: 0;
+          -o-animation-delay: 0;
+     animation-delay: 0;
+}
+.butterfly-flutter::before {
+  background-image: url("/destiny/images/butterfly-wing.png");
+  -webkit-transform-origin: 0% 50%;
+     -moz-transform-origin: 0% 50%;
+      -ms-transform-origin: 0% 50%;
+       -o-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation: flutter-r 0.3s infinite ease-out;
+     -moz-animation: flutter-r 0.3s infinite ease-out;
+          -o-animation: flutter-r 0.3s infinite ease-out;
+     animation: flutter-r 0.3s infinite ease-out;
+  left: 55%;
+}
+.butterfly-flutter::after {
+  background-image: url("/destiny/images/butterfly-wing-l.png");
+  -webkit-transform-origin: 100% 50%;
+     -moz-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+       -o-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-animation: flutter-l 0.3s infinite ease-out;
+     -moz-animation: flutter-l 0.3s infinite ease-out;
+          -o-animation: flutter-l 0.3s infinite ease-out;
+     animation: flutter-l 0.3s infinite ease-out;
+  right: 55%;
+}
+
+@-webkit-keyframes flutter-r {
+  0%, 100% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(-40deg);
+            transform: rotateY(-40deg);
+  }
+}
+
+@-moz-keyframes flutter-r {
+  0%, 100% {
+    -moz-transform: rotateY(0deg);
+         transform: rotateY(0deg);
+  }
+  50% {
+    -moz-transform: rotateY(-40deg);
+         transform: rotateY(-40deg);
+  }
+}
+
+@-o-keyframes flutter-r {
+  0%, 100% {
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(-40deg);
+       -moz-transform: rotateY(-40deg);
+            transform: rotateY(-40deg);
+  }
+}
+
+@keyframes flutter-r {
+  0%, 100% {
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(-40deg);
+       -moz-transform: rotateY(-40deg);
+            transform: rotateY(-40deg);
+  }
+}
+@-webkit-keyframes flutter-l {
+  0%, 100% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(40deg);
+            transform: rotateY(40deg);
+  }
+}
+@-moz-keyframes flutter-l {
+  0%, 100% {
+    -moz-transform: rotateY(0deg);
+         transform: rotateY(0deg);
+  }
+  50% {
+    -moz-transform: rotateY(40deg);
+         transform: rotateY(40deg);
+  }
+}
+@-o-keyframes flutter-l {
+  0%, 100% {
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(40deg);
+       -moz-transform: rotateY(40deg);
+            transform: rotateY(40deg);
+  }
+}
+@keyframes flutter-l {
+  0%, 100% {
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(40deg);
+       -moz-transform: rotateY(40deg);
+            transform: rotateY(40deg);
+  }
+}
+@-webkit-keyframes turn {
+  0%, 100% {
+    -webkit-transform: translateX(-20%) rotateZ(30deg);
+            transform: translateX(-20%) rotateZ(30deg);
+  }
+  25% {
+    -webkit-transform: translateX(50%) rotateZ(-30deg);
+            transform: translateX(50%) rotateZ(-30deg);
+  }
+  50% {
+    -webkit-transform: translateX(-80%) rotateZ(30deg);
+            transform: translateX(-80%) rotateZ(30deg);
+  }
+  75% {
+    -webkit-transform: translateX(30%) rotateZ(-30deg);
+            transform: translateX(30%) rotateZ(-30deg);
+  }
+}
+@-moz-keyframes turn {
+  0%, 100% {
+    -moz-transform: translateX(-20%) rotateZ(30deg);
+         transform: translateX(-20%) rotateZ(30deg);
+  }
+  25% {
+    -moz-transform: translateX(50%) rotateZ(-30deg);
+         transform: translateX(50%) rotateZ(-30deg);
+  }
+  50% {
+    -moz-transform: translateX(-80%) rotateZ(30deg);
+         transform: translateX(-80%) rotateZ(30deg);
+  }
+  75% {
+    -moz-transform: translateX(30%) rotateZ(-30deg);
+         transform: translateX(30%) rotateZ(-30deg);
+  }
+}
+@-o-keyframes turn {
+  0%, 100% {
+    -webkit-transform: translateX(-20%) rotateZ(30deg);
+       -moz-transform: translateX(-20%) rotateZ(30deg);
+         -o-transform: translateX(-20%) rotateZ(30deg);
+            transform: translateX(-20%) rotateZ(30deg);
+  }
+  25% {
+    -webkit-transform: translateX(50%) rotateZ(-30deg);
+       -moz-transform: translateX(50%) rotateZ(-30deg);
+         -o-transform: translateX(50%) rotateZ(-30deg);
+            transform: translateX(50%) rotateZ(-30deg);
+  }
+  50% {
+    -webkit-transform: translateX(-80%) rotateZ(30deg);
+       -moz-transform: translateX(-80%) rotateZ(30deg);
+         -o-transform: translateX(-80%) rotateZ(30deg);
+            transform: translateX(-80%) rotateZ(30deg);
+  }
+  75% {
+    -webkit-transform: translateX(30%) rotateZ(-30deg);
+       -moz-transform: translateX(30%) rotateZ(-30deg);
+         -o-transform: translateX(30%) rotateZ(-30deg);
+            transform: translateX(30%) rotateZ(-30deg);
+  }
+}
+@keyframes turn {
+  0%, 100% {
+    -webkit-transform: translateX(-20%) rotateZ(30deg);
+       -moz-transform: translateX(-20%) rotateZ(30deg);
+         -o-transform: translateX(-20%) rotateZ(30deg);
+            transform: translateX(-20%) rotateZ(30deg);
+  }
+  25% {
+    -webkit-transform: translateX(50%) rotateZ(-30deg);
+       -moz-transform: translateX(50%) rotateZ(-30deg);
+         -o-transform: translateX(50%) rotateZ(-30deg);
+            transform: translateX(50%) rotateZ(-30deg);
+  }
+  50% {
+    -webkit-transform: translateX(-80%) rotateZ(30deg);
+       -moz-transform: translateX(-80%) rotateZ(30deg);
+         -o-transform: translateX(-80%) rotateZ(30deg);
+            transform: translateX(-80%) rotateZ(30deg);
+  }
+  75% {
+    -webkit-transform: translateX(30%) rotateZ(-30deg);
+       -moz-transform: translateX(30%) rotateZ(-30deg);
+         -o-transform: translateX(30%) rotateZ(-30deg);
+            transform: translateX(30%) rotateZ(-30deg);
+  }
+}
+.button-image
+{
+  max-width: 100px;
+  height: 190px;
+  -moz-background-size: contain;
+  -webkit-background-size: contain;
+       -o-background-size: contain;
+          background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  margin: auto;
+  display: block;
+  width: 100%;
+  -webkit-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  transition: all 700ms ease;
+}
+.blob-box
+{
+  height: 100%;
+ overflow: hidden;
+ position: absolute;
+ top: 0;
+ left: 0;
+ bottom: -3px;
+ right: -1px;
+ z-index: -1;
+}
+.blob-box div
+{
+  background-color: #2a1a52;
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50px;
+  position: absolute;
+  -webkit-transform: scale(1.4) translateY(125%) translateZ(0);
+  -moz-transform: scale(1.4) translateY(125%) translateZ(0);
+  transform: scale(1.4) translateY(125%) translateZ(0);
+  -webkit-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  transition: all 700ms ease;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+  -webkit-transition-delay: 60ms;
+  -moz-transition-delay: 60ms;
+  -o-transition-delay: 60ms;
+  transition-delay: 60ms;
+}
+a:hover .button-image .blob-box div {
+  -webkit-transform: scale(1.4) translateY(0) translateZ(0);
+     -moz-transform: scale(1.4) translateY(0) translateZ(0);
+          transform: scale(1.4) translateY(0) translateZ(0);
+}
+.button-image-1
+{
+  background-image: url('/destiny/images/buttons-1.png');
+}
+.button-image-2
+{
+  background-image: url('/destiny/images/buttons-2.png');
+}
+.button-image-3
+{
+  background-image: url('/destiny/images/buttons-3.png');
+}
+.button-image-4
+{
+  background-image: url('/destiny/images/buttons-4.png');
+}
+.button-image-5
+{
+  background-image: url('/destiny/images/buttons-5.png');
+}
+.button-image-6
+{
+  background-image: url('/destiny/images/buttons-6.png');
+}
+.button-image-7
+{
+  background-image: url('/destiny/images/buttons-7.png');
+}
+.button-image-8
+{
+  background-image: url('/destiny/images/buttons-8.png');
+}
+.button-image-9
+{
+  background-image: url('/destiny/images/buttons-9.png');
+}
+.button-image-10
+{
+  background-image: url('/destiny/images/buttons-10.png');
+}
+.button-image-11
+{
+  background-image: url('/destiny/images/buttons-11.png');
+}
+
+.astro_sign_big
+{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 56%;
+  margin: auto;
+  z-index: 2;
+}
+.landing-title{
+  position: absolute;
+  left: 0;
+  top: 30vh;
+  margin: auto;
+  color: #fff;
+  font-size: 65px;
+  width: 50%;
+  line-height: 1.4;
+  font-weight: 700;
+  color:#ABABB5;
+  font-family: var(--landing-title);
+}
+@media screen and (min-width: 280px)
+{
+  /* unsub */
+  .container>.col-xs-12.text-center.offset3:first-child
+  {
+    padding-top: 0;
+  }
+  .container>.col-xs-12.text-center.offset3:first-child>h2
+  {
+    font-weight: 600;
+    font-size: 35px;
+    text-align: center;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .col-xs-12.text-center.offset3>h3
+  {
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  .col-xs-12.text-center.offset3 .input-group-addon
+  {
+    display: block;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 7px;
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .col-xs-12.text-center.offset3
+  {
+    color: #fff;
+    line-height: 1.2;
+    text-align: center !important;
+  }
+  .col-xs-12.text-center.offset3:last-child
+  {
+    display: block;
+    padding: 1.25em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 2px solid #2a1a52;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: .5em;
+    border-radius: 0.5em;
+    margin: auto;
+    margin-top: 0;
+    max-width: 400px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px -10px 20px -8px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 0px -10px 20px -8px rgba(0, 0, 0, 0.46);
+    box-shadow: 0 -8px 5px -5px rgb(0 0 0 / 24%);
+    background: url(/destiny/images/typewriter_bg.png);
+    padding: 20px 0;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+  .col-xs-12.text-center.offset3 input.form-control
+  {
+    color: #212529;
+    display: inline-block;
+    height: 50px;
+    transition: box-shadow .2s linear, border-color .25s ease-out, -webkit-box-shadow .2s linear, -moz-box-shadow .2s linear;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 100px !important;
+    -moz-border-radius: 100px !important;
+    border-radius: 100px !important;
+    background-color: #ffffff;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    border: none;
+    padding: 0.4em 1em 0.5em;
+    margin: auto auto 1em !important;
+  }
+  .col-xs-12.text-center.offset3 input[type="submit"]
+  {
+    border: none;
+    background: #D5846E;
+    padding: 16px 20px;
+    width: 100%;
+    margin: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    color: #0D0417;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  /* end - unsub */
+  /* login */
+  html[dir="rtl"] form .input-group
+  {
+    direction:ltr;
+  }
+  .card
+  {
+    -webkit-box-shadow: 0px -10px 20px -8px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 0px -10px 20px -8px rgba(0, 0, 0, 0.46);
+    box-shadow: 0 -8px 5px -5px rgb(0 0 0 / 24%);
+    background: url(/destiny/images/typewriter_bg.png);
+    padding: 20px 0;
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+            border-radius: 15px;
+  }
+  .card input[type="msisdn"]
+  {
+      padding: 16px 20px;
+      width: 70%;
+      margin: auto;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      border-radius: 100px;
+      font-family: var(--initial-font);
+      font-weight: 300;
+      color: #080a33;
+      font-size: 15px;
+      text-align: left;
+      line-height: 20px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      text-transform: uppercase;
+      border: none;
+      margin-left: 0;
+  }
+  .card .input-group-text
+  {
+      padding: 16px 20px;
+      margin: auto;
+      -webkit-border-radius: 100px 0 0 100px;
+      -moz-border-radius: 100px 0 0 100px;
+      border-radius: 100px 0 0 100px;
+      font-family: var(--initial-font);
+      font-weight: 300;
+      color: #fff;
+      font-size: 15px;
+      text-align: left;
+      line-height: 20px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      text-transform: uppercase;
+      border: none;
+      margin-right: 0;
+      background: #78727d;
+  }
+  .card .input-group-prepend
+  {
+      width: 60px;
+  }
+  .card .btn.btn-primary
+  {
+    border: none;
+    background: #D5846E;
+    padding: 16px 20px;
+    width: 100%;
+    margin: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    color: #0D0417;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+  .card .form-label-group
+  {
+    text-align: center;
+  }
+  /* end login */
+  .landing-title{
+    left: 0;
+    top: 18vw;
+    font-size: 31px;
+    width: 93vw;
+    text-align: center;
+    margin: auto;
+    display: block;
+    right: 0;
+    z-index: 4;
+  }
+  .head-girl {
+      height: 100vw;
+      width: 80vw;
+      right: 0;
+      bottom: 10vh;
+      background-position: 60px center;
+  }
+  .womanface
+  {
+    height: 100vw;
+    width: 80vw;
+    right: 0;
+    bottom: 10vh;
+    background-position: 60px center;
+  }
+  .zodiac_box
+  {
+    right: 0;
+    width: 95%;
+    height: 70vh;
+    overflow: hidden;
+    bottom: 0;
+    margin: auto;
+  }
+  .zodiac-main:before
+  {
+    height: 67vh;
+    display: block;
+    width: 67vh;
+  }
+  .butterflybox
+  {
+    overflow: auto;
+    height: 100vh;
+    width: 75%;
+    right: 0;
+    position: absolute;
+  }
+  .cards
+  {
+    background: url('/destiny/images/cards.png');
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+         -o-background-size: contain;
+            background-size: contain;
+    z-index: 10;
+    position: absolute;
+    height: 56vw;
+    width: 48vw;
+    bottom: -40px;
+    right: 0;
+    background-position: 45px 0;
+    background-repeat: no-repeat;
+  }
+  .flowers
+  {
+    height: 60vh;
+    width: 84vw;
+    right: 0;
+    bottom: 9vh;
+    background-position: 90px top;
+  }
+  .planets
+  {
+    height: 60vh;
+    width: 85vw;
+    bottom: 9vh;
+    right: 0;
+    background-position: 90px top;
+  }
+  .butterfly {
+    right: 40vw;
+    width: 80px;
+    height: 59px;
+    bottom: 33vh;
+  }
+  .butterfly-flutter {
+    width: 1.7rem;
+    height: 4rem;
+  }
+  @-webkit-keyframes fly {
+    0% {
+      opacity: 0;
+              -webkit-transform: translateY(0vh);
+                      transform: translateY(0vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+              -webkit-transform: translateY(-70vh);
+                      transform: translateY(-70vh);
+    }
+  }
+  @-moz-keyframes fly {
+    0% {
+      opacity: 0;
+              -moz-transform: translateY(0vh);
+                   transform: translateY(0vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+              -moz-transform: translateY(-70vh);
+                   transform: translateY(-70vh);
+    }
+  }
+  @-o-keyframes fly {
+    0% {
+      opacity: 0;
+              -webkit-transform: translateY(0vh);
+                 -moz-transform: translateY(0vh);
+                   -o-transform: translateY(0vh);
+                      transform: translateY(0vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+              -webkit-transform: translateY(-70vh);
+                 -moz-transform: translateY(-70vh);
+                   -o-transform: translateY(-70vh);
+                      transform: translateY(-70vh);
+    }
+  }
+  @keyframes fly {
+    0% {
+      opacity: 0;
+              -webkit-transform: translateY(0vh);
+                 -moz-transform: translateY(0vh);
+                   -o-transform: translateY(0vh);
+                      transform: translateY(0vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+              -webkit-transform: translateY(-70vh);
+                 -moz-transform: translateY(-70vh);
+                   -o-transform: translateY(-70vh);
+                      transform: translateY(-70vh);
+    }
+  }
+  .footer
+  {
+    font-size: 10px;
+    color:#ABABB5;
+    -webkit-box-shadow: 0px -10px 20px -8px rgba(0,0,0,0.46);
+    -moz-box-shadow: 0px -10px 20px -8px rgba(0,0,0,0.46);
+    box-shadow: 0 -8px 5px -5px rgb(0 0 0 / 24%);
+    background: url("/destiny/images/typewriter_bg.png");
+  }
+  .footer a
+  {
+    font-weight: 900;
+    color:#ABABB5;
+  }
+  .head
+  {
+    max-width: 230px;
+    margin: auto;
+    width: 100%;
+  }
+  .inputbox_intro
+  {
+    background: url("/destiny/images/typewriter_bg.png");
+    padding: 16px 20px;
+    width: 100%;
+    margin: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    color: #ABABB5;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .dropdown_input
+  {
+    background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"), url("/destiny/images/typewriter_bg.png");
+    padding: 16px 20px;
+    width: 100%;
+    margin: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+    -moz-background-size: 20px 20px, auto;
+    -webkit-background-size: 20px 20px, auto;
+         -o-background-size: 20px 20px, auto;
+            background-size: 20px 20px, auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    text-transform: uppercase;
+    background-repeat: no-repeat, repeat;
+    background-position: 90% center,center center;
+    border: none;
+  }
+  option
+  {
+    background-color: #1d1e1d;
+    border: none;
+  }
+  .category_button
+  {
+    color: #ABABB5;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 16px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .submit_button:hover,.submit_button:active,.submit_button:focus
+  {
+    background-color: #5A6162;
+    color: #ABABB5;
+    cursor:pointer;
+
+  }
+  a.back_arrow{
+    padding-top: 3px;
+    position: absolute;
+  }
+  a.back_arrow > i > svg{
+    width: 40px;
+  }
+  .navbar
+  {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 9999999999999;
+    background: none !important;
+  }
+  .custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255 255 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  .collapsing {
+    -webkit-transition-delay:0s;
+    -moz-transition-delay: 0s;
+      -o-transition-delay: 0s;
+         transition-delay: 0s;
+    -webkit-transition: height 0s ease;
+    -o-transition: height 0s ease;
+    -moz-transition: height 0s ease;
+    transition: height 0s ease;
+  }
+
+  .collapse.show
+  {
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 9999999;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    margin: auto;
+  }
+  .collapse.show>.bg-dark
+  {
+    background-color: #0D0417 !important;
+    height: 100vh;
+    text-align: center;
+    background: url("/destiny/images/small_stars.png");
+  }
+  .menu_button
+  {
+    width: 100%;
+    display: block;
+    padding: 8px 0;
+    color: #ABABB5;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 3px 3px rgb(0 0 0 / 16%);
+  }
+  .menu_button:hover,.menu_button:active,.menu_button:focus
+  {
+    color: #C7B59E;
+    cursor: pointer !important;
+  }
+  .title
+  {
+    line-height: 1;
+    color: #ABABB5;
+    font-family: var(--initial-font);
+    text-align: center;
+    font-size: 25px;
+  }
+  .title span
+  {
+    color: #c7b59e;
+    text-transform: capitalize;
+  }
+  .big_sign
+  {
+    width: 100%;
+    max-width: 190px;
+  }
+  .date_range
+  {
+    color: #D5846E;
+    font-size: 12px;
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+  }
+  .date_range_chinese
+  {
+    color: #D5846E;
+    font-size: 12px;
+  }
+  .lighter
+  {
+    color:#ABABB5 !important;
+  }
+  .subtitle
+  {
+    line-height: 1;
+    color: #c7b59e;
+    font-family: var(--initial-font);
+    text-align: left;
+    font-size: 18px;
+  }
+  .subtitle_smaller
+  {
+    line-height: 1;
+    color: #c7b59e;
+    font-family: var(--initial-font);
+    text-align: left;
+    font-size: 14px;
+  }
+  .basic_text
+  {
+    color: #ABABB5;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: justify;
+  }
+  .basic_text>span
+  {
+    color: #d5846e;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    font-style: italic;
+    display: block;
+  }
+  #container-holder
+  {
+    text-align: justify !important;
+  }
+  .signs,.sign
+  {
+    width: auto;
+    height: 100%;
+    max-height: 100px;
+    margin: auto;
+  }
+  .sign
+  {
+    max-width: 100px;
+  }
+  .container.site-legal-container
+  {
+    position: relative;
+    width: 90%;
+    padding-top: 20px;
+    margin: auto;
+    text-align: justify;
+    padding-bottom: 0;
+  }
+.downloadButton
+ {
+   z-index: 1;
+   background-color: #D5846E;
+   color: #0D0417;
+   margin: auto;
+   padding: 10px 21px;
+   -webkit-border-radius: 100px;
+   -moz-border-radius: 100px;
+   border-radius: 100px;
+   font-weight: 700;
+   text-transform: uppercase;
+   position: absolute;
+   top: 50%;
+   -webkit-transform: translateY(-50%);
+   -moz-transform: translateY(-50%);
+   -ms-transform: translateY(-50%);
+   -o-transform: translateY(-50%);
+   transform: translateY(-50%);
+   left: 0;
+   width: 70%;
+   right: 0;
+ }
+  .btn.btn-default.btn-md,
+  .daily_link,
+  .weekly_link,
+  .monthly_link
+  {
+    background-color: #D5846E;
+    color: #0D0417;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 16px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-size: 8px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .btn.btn-default.btn-md:hover,
+  .btn.btn-default.btn-md:active,
+  .btn.btn-default.btn-md:focus,
+  .daily_link:hover,
+  .daily_link:active,
+  .daily_link:focus,
+  .weekly_link:hover,
+  .weekly_link:active,
+  .weekly_link:focus,
+  .monthly_link:hover,
+  .monthly_link:active,
+  .monthly_link:focus
+  {
+    background-color: #42374F;
+    color: #0D0417;
+    cursor:pointer;
+  }
+  .btn.btn-default.btn-md
+  {
+    width: auto;
+    padding: 16px 10px;
+  }
+  .progress
+  {
+    background-color: #21212C;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    height: 15px;
+    padding: 3px;
+  }
+  .progress-bar
+  {
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    background-color: #42374F;
+  }
+  .about_images
+  {
+    max-width: 550px;
+    position: relative;
+  }
+  .flip {
+    -webkit-perspective: 800;
+    max-width: 200px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    height: 380px;
+  }
+  .flip .tarot.flipped {
+    -webkit-transform: rotatey(-180deg);
+  }
+  .flip .tarot {
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    /* height: 700px; */
+  }
+  .flip .tarot .face {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    z-index: 1;
+    background: black;
+    color: white;
+    cursor: pointer;
+    background-color: #000;
+    width: 100%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+  .flip .tarot .back {
+    -webkit-transform: rotatey(-180deg);
+      background: blue;
+      background: white;
+      color: black;
+      cursor: pointer;
+  }
+  .flip .tarot .face>img
+  {
+    background-color: #0D0417;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+  .infobox
+  {
+    display: none;
+  }
+  .guideButton
+  {
+    z-index: 1;
+    background: #ab8d60;
+    margin: auto;
+    padding: 10px 21px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    width: 70%;
+    right: 0;
+  }
+  .submit_button
+  {
+    border:none;
+    background: #D5846E;
+    padding: 16px 20px;
+    width: 100%;
+    margin: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-family: var(--initial-font);
+    font-weight: 300;
+    color: #0D0417;
+    font-size: 15px;
+    text-align: center;
+    line-height: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-transform: uppercase;
+  }
+  hr
+  {
+    opacity: 1;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0d0520+0,7c5096+50,0d0520+100&0+0,1+50,0+100 */
+    background: -webkit-gradient(linear,  left top, right top,  from(rgba(13,5,32,0)),color-stop(50%, rgba(124,80,150,1)),to(rgba(13,5,32,0)));
+    background: -webkit-linear-gradient(left,  rgba(13,5,32,0) 0%,rgba(124,80,150,1) 50%,rgba(13,5,32,0) 100%);
+    background: -moz-linear-gradient(left,  rgba(13,5,32,0) 0%,rgba(124,80,150,1) 50%,rgba(13,5,32,0) 100%);
+    background: -o-linear-gradient(left,  rgba(13,5,32,0) 0%,rgba(124,80,150,1) 50%,rgba(13,5,32,0) 100%);
+    background: linear-gradient(to right,  rgba(13,5,32,0) 0%,rgba(124,80,150,1) 50%,rgba(13,5,32,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    height: 4px !important;
+  }
+  .number
+  {
+    background: url("/destiny/images/typewriter_bg.png");
+    margin: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-family: var(--initial-font);
+    font-weight: 700;
+    color: #fff;
+    font-size: 55px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    border:none;
+    line-height: 110px;
+    height: 100px;
+    width: 100px;
+  }
+  .big_number
+  {
+    margin: auto;
+    font-family: var(--initial-font);
+    font-weight: 700;
+    color: #fff;
+    font-size: 59vw;
+    display: block;
+    border:none;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .number:hover
+  {
+    color: #D5846E;
+  }
+  .luckynumber,.unlucky_number
+  {
+    background: none;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    line-height: 80px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 50%;
+    font-family: var(--initial-font);
+    font-weight: 600;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    background: url(/destiny/images/numerology_bg.png),#42374F;
+  }
+  .unlucky_number
+  {
+  background-color: #171322;
+  }
+  .luckycolor,.unluckycolor
+  {
+    background: #ABABB5;
+    height: 80px;
+  }
+  ul.check-list  {
+    padding-left:0;
+  }
+  .check-list li {
+    position: relative;
+    list-style-type: none;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .check-list li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 5px;
+    height: 11px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #D5846E;
+    -webkit-transform-origin: bottom left;
+    -moz-transform-origin: bottom left;
+    -ms-transform-origin: bottom left;
+    -o-transform-origin: bottom left;
+    transform-origin: bottom left;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .icon
+  {
+    max-width: 90px;
+    width:100%;
+    margin:auto;
+    text-align:center;
+    display: block;
+  }
+  .male
+  {
+    background-image: url("/destiny/images/male.png"),url("/destiny/images/typewriter_bg.png");
+    background-position: center,center;
+    background-repeat: no-repeat,repeat;
+  }
+  .female
+  {
+    background-image: url("/destiny/images/female.png"),url("/destiny/images/typewriter_bg.png");
+    background-position: center,center;
+    background-repeat: no-repeat,repeat;
+  }
+  .content
+  {
+  margin-top: 0px;
+  margin-left: 91px;
+  }
+  .wallpaper,.whatsapp_sticker
+  {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .wallpaper> .sign_name, .whatsapp_sticker> .sign_name
+  {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    left: 0;
+  }
+  .wallpaper>a, .whatsapp_sticker>a
+  {
+    color:#fff;
+  }
+  .wallpaper>a>.downloadButton, .whatsapp_sticker>a>.downloadButton
+  {
+    bottom: 0;
+    top: inherit;
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 90%;
+  }
+  #contact textarea#message.form-control
+  {
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+  }
+  #contact .subtitle
+  {
+    color: #AB8D60;
+  }
+  #contact .submit_button
+  {
+    width: auto;
+    margin: inherit;
+    min-width: 200px;
+  }
+
+  #info-adress-show p>span
+  {
+    font-weight: bold;
+    font-size: 14px
+  }
+  #info-adress-show p
+  {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 576px)
+{
+  .head-girl {
+      height: 90vw;
+  }
+  .womanface
+  {
+    height: 90vw;
+  }
+  .flowers
+  {
+    height: 52vh;
+    bottom: 11vh;
+  }
+  .planets
+  {
+    height: 52vh;
+    bottom: 11vh;
+  }
+  .zodiac_box
+  {
+    right: 0;
+    width: 95%;
+    height: 70vh;
+    overflow: hidden;
+    bottom: 0;
+    margin: auto;
+  }
+  .zodiac-main:before
+  {
+    height: 67vh;
+    display: block;
+    width: 67vh;
+  }
+  .category_button
+  {
+    font-size: 14px;
+    padding: 20px 0;
+  }
+  .inputbox_intro
+  {
+    font-size: 20px;
+    padding: 25px 0;
+  }
+  .daily_link,
+  .weekly_link,
+  .monthly_link
+  {
+    font-size: 14px;
+    padding: 20px 0;
+
+  }
+  .big_number {
+    font-size: 29vw;
+  }
+  .basic_text
+  {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .subtitle
+  {
+    font-size: 24px;
+  }
+  .subtitle_smaller
+  {
+    font-size: 18px;
+  }
+  .title {
+      font-size: 40px;
+      padding: 0;
+  }
+  .menu_button
+  {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px)
+{
+  .chinese_horoscope, .chinese_horoscope_big
+  {
+    height: 140px;
+  }
+  .signs,.sign
+  {
+    max-height: 150px;
+  }
+  .landing-title {
+    font-size: 7vw;
+  }
+  .head-girl {
+      height: 50vw;
+      width: 50vw;
+  }
+  .womanface
+  {
+    height: 50vw;
+    width: 50vw;
+  }
+  .flowers
+  {
+    height: 50vw;
+    width: 50vw;
+  }
+  .planets
+  {
+    height: 50vw;
+    width: 50vw;
+  }
+  .cards {
+    height: 29vw;
+    width: 30vw;
+    bottom: -40px;
+  }
+  .zodiac_box {
+    width: 63%;
+    height: 63vh;
+  }
+  @-webkit-keyframes fly {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70vh);
+              transform: translateY(70vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateY(-70vh);
+              transform: translateY(-70vh);
+    }
+  }
+  @-moz-keyframes fly {
+    0% {
+      opacity: 0;
+      -moz-transform: translateY(70vh);
+           transform: translateY(70vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+      -moz-transform: translateY(-70vh);
+           transform: translateY(-70vh);
+    }
+  }
+  @-o-keyframes fly {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70vh);
+         -moz-transform: translateY(70vh);
+           -o-transform: translateY(70vh);
+              transform: translateY(70vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateY(-70vh);
+         -moz-transform: translateY(-70vh);
+           -o-transform: translateY(-70vh);
+              transform: translateY(-70vh);
+    }
+  }
+  @keyframes fly {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70vh);
+         -moz-transform: translateY(70vh);
+           -o-transform: translateY(70vh);
+              transform: translateY(70vh);
+    }
+    3%, 99% {
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateY(-70vh);
+         -moz-transform: translateY(-70vh);
+           -o-transform: translateY(-70vh);
+              transform: translateY(-70vh);
+    }
+  }
+  .flip
+  {
+    max-width: 250px;
+  }
+}
+@media screen and (min-width: 992px)
+{
+  .butterfly {
+    right: 20vw;
+    width: 150px;
+    height: 200px;
+    bottom: 60vw;
+  }
+  .zodiac_box
+  {
+    right: 0;
+    width: 56%;
+    height: 96vh;
+    overflow: hidden;
+    bottom: 0;
+    margin: auto;
+  }
+  .zodiac-main
+  {
+    height: 100vh;
+    width: 100vh;
+  }
+  .zodiac-main:before
+  {
+    content: "";
+    position: absolute;
+    background: url('/destiny/images/zodiac_main.png');
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-animation: rot 50s infinite;
+    -moz-animation: rot 50s infinite;
+    -o-animation: rot 50s infinite;
+       animation: rot 50s infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+       animation-timing-function: linear;
+    height: 100vh;
+    display: block;
+    width: 100vh;
+  }
+  .head-girl
+  {
+    height: 80vh;
+    width: 44vw;
+    right: 0;
+    bottom: 10vh;
+  }
+  .womanface
+  {
+    height: 80vh;
+    width: 44vw;
+    bottom: 10vh;
+    right: 0;
+  }
+  .flowers
+  {
+    height: 80vh;
+    width: 44vw;
+    right: 0;
+    bottom: 10vh;
+  }
+  .planets
+  {
+    height: 80vh;
+    width: 44vw;
+    right: 0;
+    bottom: 10vh;
+  }
+  .cards
+  {
+    height: 420px;
+    width: 350px;
+    bottom: -160px;
+    right: 0;
+  }
+  .landing-title {
+    left: 0;
+    top: 38vh;
+    font-size: 49px;
+    width: 39%;
+    text-align: left;
+    margin-left: 0;
+  }
+  .big_number {
+  font-size: 25vw;
+  }
+  .signs,.sign
+  {
+    max-height: 150px;
+    padding: 10px;
+  }
+}
+@media screen and (min-width: 1400px)
+{
+  .big_number {
+    font-size: 350px;
+  }
+  .chinese_horoscope, .chinese_horoscope_big
+  {
+  height: 180px;
+  }
+  .signs,.sign
+  {
+    max-height: 180px;
+  }
+}
+@media screen and (min-width: 1600px)
+{
+  .zodiac_box {
+    right: 0;
+    width: 950px;
+    height: 91vh;
+    overflow: hidden;
+    bottom: 0;
+    margin: auto;
+  }
+  .head-girl
+  {
+    height: 80%;
+    width: 34vw;
+    right: 0;
+    bottom: 0;
+  }
+  .womanface
+  {
+    height: 80%;
+    width: 34vw;
+    bottom: 0;
+    right: 0;
+  }
+  .flowers
+  {
+    height: 80%;
+    width: 34vw;
+    bottom: 0;
+    right: 0;
+  }
+  .planets
+  {
+    height: 80%;
+    width: 34vw;
+    bottom: 0;
+    right: 0;
+  }
+  .flip
+  {
+    max-width: 300px;
+  }
+}
