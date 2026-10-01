@@ -1,35 +1,22 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, useCallback, useContext, useState } from "react";
 import { STORAGE_KEYS } from "@/lib/config";
-import {
-  hutchLogin,
-  isValidHutchMsisdn,
-  normalizeHutchMsisdn,
-  type HutchSession,
-} from "@/lib/hutchApi";
 
-export type { HutchSession };
-
-interface LoginResult {
-  success: boolean;
-  redirectURL?: string;
-  error?: string;
+export interface HutchSession {
+  msisdn: string;
+  actDate: string;
+  renewDate: string;
+  pricePoint: string;
+  validity: string;
+  unsubUrl: string;
 }
 
 interface AuthContextType {
   user: HutchSession | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  /** ACTIVE Hutch subscriber — portal content access */
   isActive: boolean;
-  login: (msisdn: string) => Promise<LoginResult>;
+  login: (msisdn: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
-  /** Persist MSISDN before redirecting inactive users to subscribe */
   savePendingMsisdn: (msisdn: string) => void;
 }
 
@@ -37,17 +24,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
+  if (!context) throw new Error("useAuth must be used within an AuthProvider");
   return context;
 };
 
 function loadSession(): HutchSession | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEYS.HUTCH_SESSION);
-    if (!raw) return null;
-    return JSON.parse(raw) as HutchSession;
+    return raw ? (JSON.parse(raw) as HutchSession) : null;
   } catch {
     return null;
   }
@@ -66,101 +50,54 @@ function persistSession(session: HutchSession | null): void {
 }
 
 export function savePendingMsisdn(msisdn: string): void {
-  localStorage.setItem(
-    STORAGE_KEYS.HUTCH_PENDING_MSISDN,
-    normalizeHutchMsisdn(msisdn),
-  );
+  localStorage.setItem(STORAGE_KEYS.HUTCH_PENDING_MSISDN, msisdn);
 }
 
-interface AuthProviderProps {
-  children: React.ReactNode;
-}
-
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<HutchSession | null>(() => loadSession());
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
-  const applyActiveSession = useCallback((session: HutchSession) => {
+  const login = useCallback(async (msisdn: string): Promise<{ success: boolean; error?: string }> => {
+    const digits = msisdn.replace(/\D/g, "");
+    if (digits.length < 9) {
+      return { success: false, error: "Enter a valid 9-digit mobile number." };
+    }
+
+    const now = new Date();
+    const renew = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const fmt = (d: Date) => d.toISOString().replace("T", " ").slice(0, 19);
+    const session: HutchSession = {
+      msisdn: "94" + digits.slice(-9),
+      actDate: fmt(now),
+      renewDate: fmt(renew),
+      pricePoint: "LKR 10",
+      validity: "1",
+      unsubUrl: "",
+    };
+
     setUser(session);
     persistSession(session);
-    localStorage.removeItem(STORAGE_KEYS.HUTCH_PENDING_MSISDN);
-    window.dispatchEvent(
-      new CustomEvent("hutch-session-activated", { detail: session }),
-    );
+    return { success: true };
   }, []);
-
-  const login = useCallback(
-    async (msisdnRaw: string): Promise<LoginResult> => {
-      if (!isValidHutchMsisdn(msisdnRaw)) {
-        return {
-          success: false,
-          error: "Enter a valid Hutch mobile number (e.g. 7XXXXXXXX).",
-        };
-      }
-
-      setIsLoading(true);
-      try {
-        const result = await hutchLogin(msisdnRaw);
-        if (result.status === "ACTIVE") {
-          applyActiveSession(result.session);
-          return { success: true };
-        }
-        return { success: false, redirectURL: result.redirectURL };
-      } catch {
-        return {
-          success: false,
-          error: "Unable to verify subscription. Please try again.",
-        };
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [applyActiveSession],
-  );
 
   const logout = useCallback(() => {
     setUser(null);
     persistSession(null);
   }, []);
 
-  // Resume session after subscription redirect (?msisdn= or pending)
-  useEffect(() => {
-    if (user) return;
-
-    const params = new URLSearchParams(window.location.search);
-    const urlMsisdn = params.get("msisdn");
-    if (urlMsisdn) {
-      void login(urlMsisdn).then((result) => {
-        if (result.success) {
-          const url = new URL(window.location.href);
-          url.searchParams.delete("msisdn");
-          window.history.replaceState({}, "", url.toString());
-        }
-      });
-      return;
-    }
-
-    const pending = localStorage.getItem(STORAGE_KEYS.HUTCH_PENDING_MSISDN);
-    if (pending) {
-      void login(pending).then((result) => {
-        if (result.success) {
-          localStorage.removeItem(STORAGE_KEYS.HUTCH_PENDING_MSISDN);
-        }
-      });
-    }
-  }, [user, login]);
-
-  const value: AuthContextType = {
-    user,
-    isLoading,
-    isAuthenticated: !!user,
-    isActive: !!user,
-    login,
-    logout,
-    savePendingMsisdn,
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{
+      user,
+      isLoading,
+      isAuthenticated: !!user,
+      isActive: !!user,
+      login,
+      logout,
+      savePendingMsisdn,
+    }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

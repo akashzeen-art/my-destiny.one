@@ -12,19 +12,19 @@ import { Label } from "@/components/ui/label";
 import { BRAND } from "@/lib/brand";
 import { HUTCH_CONFIG } from "@/lib/config";
 import { useAuth } from "@/contexts/AuthContext";
-import { HUTCH_COUNTRY_CODE } from "@/lib/hutchApi";
 import { Loader2, Phone, Sparkles, Star } from "lucide-react";
+
+const HUTCH_COUNTRY_CODE = "94";
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  /** Called after ACTIVE login (before close). Use to navigate to pending service. */
   onSuccess?: () => void;
   defaultTab?: "login" | "signup";
 }
 
 const AuthModal = ({ isOpen, onClose, onSuccess }: AuthModalProps) => {
-  const { login, savePendingMsisdn, isLoading } = useAuth();
+  const { login, isLoading } = useAuth();
   const [mobile, setMobile] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -35,18 +35,8 @@ const AuthModal = ({ isOpen, onClose, onSuccess }: AuthModalProps) => {
     const result = await login(mobile);
     if (result.success) {
       setMobile("");
-      if (onSuccess) {
-        onSuccess();
-      } else {
-        onClose();
-      }
-      return;
-    }
-
-    // INACTIVE — no portal access; redirect to carrier subscription URL
-    if (result.redirectURL) {
-      savePendingMsisdn(mobile);
-      window.location.href = result.redirectURL;
+      if (onSuccess) onSuccess();
+      else onClose();
       return;
     }
 
@@ -87,10 +77,7 @@ const AuthModal = ({ isOpen, onClose, onSuccess }: AuthModalProps) => {
                   value={mobile}
                   onChange={(e) => {
                     let digits = e.target.value.replace(/\D/g, "");
-                    // Strip country code if user pastes full MSISDN
-                    if (digits.startsWith(HUTCH_COUNTRY_CODE)) {
-                      digits = digits.slice(HUTCH_COUNTRY_CODE.length);
-                    }
+                    if (digits.startsWith(HUTCH_COUNTRY_CODE)) digits = digits.slice(HUTCH_COUNTRY_CODE.length);
                     if (digits.startsWith("0")) digits = digits.slice(1);
                     setMobile(digits.slice(0, 10));
                   }}

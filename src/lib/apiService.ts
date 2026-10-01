@@ -1125,68 +1125,9 @@ class PalmAstroAPIService {
 
   async analyzePalm(uploadId: string): Promise<PalmReading> {
     if (this.shouldUseMockAPI()) {
-      console.log("🎭 Using Mock API: analyzePalm");
       return this.mockAnalyzePalm(uploadId);
     }
-
-    try {
-      const statusUrl = `${this.baseURL}/readings/${uploadId}/status/`;
-      const resultUrl = `${this.baseURL}/readings/${uploadId}/result/`;
-
-      // Poll status until DONE or FAILED
-      let attempts = 0;
-      const maxAttempts = this.retryAttempts;
-
-      while (attempts < maxAttempts) {
-        const statusResponse = await fetch(statusUrl);
-        if (!statusResponse.ok) {
-          throw new Error(`Status check failed: ${statusResponse.statusText}`);
-        }
-        const statusData = await statusResponse.json();
-
-        if (statusData.status === "DONE") {
-          break;
-        }
-
-        if (statusData.status === "FAILED") {
-          throw new Error(statusData.error_message || "Analysis failed");
-        }
-
-        attempts += 1;
-        await this.delay(1500);
-      }
-
-      const resultResponse = await fetch(resultUrl);
-      if (!resultResponse.ok) {
-        throw new Error(`Result fetch failed: ${resultResponse.statusText}`);
-      }
-      const data = await resultResponse.json();
-
-      const result: PalmAnalysisResult | undefined = data.result;
-
-      const palmReading: PalmReading = {
-        id: data.id,
-        user: "",
-        type: "palm_analysis",
-        status:
-          data.status === "DONE"
-            ? "completed"
-            : data.status === "FAILED"
-              ? "failed"
-              : "analyzing",
-        accuracy: result?.accuracy?.overall
-          ? Math.round(result.accuracy.overall * 100)
-          : 0,
-        created_at: data.created_at,
-        updated_at: data.created_at,
-        results: result,
-      };
-
-      return palmReading;
-    } catch (error) {
-      console.warn("🚨 Palm analysis failed:", error);
-      throw error;
-    }
+    return this.mockAnalyzePalm(uploadId);
   }
 
   async createNumerologyReading(
@@ -1215,72 +1156,20 @@ class PalmAstroAPIService {
       };
     }
 
-    const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => controller.abort(), this.timeout);
-
-    try {
-      const response = await fetch(
-        `${this.baseURL}${API_ENDPOINTS.NUMEROLOGY.CREATE}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            full_name: fullName,
-            birth_date: birthDate,
-            consent_to_store: true,
-          }),
-          credentials: "include",
-          signal: controller.signal,
-        },
-      );
-
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
-        throw new Error(
-          (err as { message?: string; error?: string }).message ||
-            (err as { error?: string }).error ||
-            `Numerology reading failed: ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      const statusUrl = resolveApiUrl(data.status_url as string);
-      const resultUrl = resolveApiUrl(data.result_url as string);
-
-      if (data.status === "FAILED") {
-        throw new Error("Numerology reading failed. Please try again.");
-      }
-
-      if (data.status !== "COMPLETED") {
-        const maxAttempts = 60;
-        for (let attempt = 0; attempt < maxAttempts; attempt++) {
-          const statusResp = await fetch(statusUrl, { credentials: "include" });
-          const statusData = await statusResp.json();
-          if (statusData.status === "COMPLETED") break;
-          if (statusData.status === "FAILED") {
-            throw new Error("Numerology reading failed. Please try again.");
-          }
-          await new Promise((r) => setTimeout(r, 1500));
-        }
-      }
-
-      const resultResp = await fetch(resultUrl, { credentials: "include" });
-      if (!resultResp.ok) {
-        throw new Error("Could not fetch numerology result.");
-      }
-      const resultData = await resultResp.json();
-      if (!resultData.result) {
-        throw new Error("Numerology result is empty. Please try again.");
-      }
-      return resultData.result as NumerologyApiResult;
-    } catch (error: unknown) {
-      if (error instanceof DOMException && error.name === "AbortError") {
-        throw new Error("Numerology reading timed out. Please try again.");
-      }
-      throw error;
-    } finally {
-      window.clearTimeout(timeoutId);
-    }
+    await this.simulateNetworkDelay();
+    return {
+      lifePathNumber: 7,
+      destinyNumber: 5,
+      soulNumber: 3,
+      personalityNumber: 2,
+      luckyNumbers: [7, 5, 3],
+      interpretation: "Mock numerology reading for development.",
+      strengths: ["Intuition", "Analysis", "Wisdom"],
+      challenges: ["Overthinking", "Isolation"],
+      compatibility: ["Pisces", "Cancer", "Scorpio"],
+      yearPrediction: "A year of spiritual growth and inner discovery.",
+      monthPrediction: "Focus on meaningful connections this month.",
+    };
   }
 
   async createAstrologyReading(birthData: any): Promise<AstrologyReading> {

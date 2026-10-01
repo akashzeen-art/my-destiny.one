@@ -7,14 +7,7 @@ interface ServiceGateRouteProps {
   featureName?: string;
 }
 
-/**
- * Portal content requires an ACTIVE Hutch subscription (CP Login, pid 21).
- * Guests see login prompt + auth modal; INACTIVE users are redirected at login.
- */
-const ServiceGateRoute = ({
-  children,
-  featureName = "this service",
-}: ServiceGateRouteProps) => {
+const ServiceGateRoute = ({ children, featureName = "this service" }: ServiceGateRouteProps) => {
   const { isActive } = useAuth();
 
   useEffect(() => {
@@ -27,7 +20,7 @@ const ServiceGateRoute = ({
     return (
       <LoginPrompt
         featureName={featureName}
-        description={`Enter your Hutch mobile number to use ${featureName}. If you are not subscribed, you will be redirected to activate the service.`}
+        description={`Sign in with your mobile number to use ${featureName}.`}
       />
     );
   }
