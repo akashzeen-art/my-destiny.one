@@ -58,7 +58,6 @@ function AppRoutes() {
     <SubscriptionProvider>
       <CosmicBackgroundGate />
       <ScrollToTop />
-      <GlobalAuthModal />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/horoscope" element={<ServiceGateRoute featureName="Horoscope"><Horoscope /></ServiceGateRoute>} />
