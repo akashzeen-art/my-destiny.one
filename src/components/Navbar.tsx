@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { useSubscription } from "@/contexts/SubscriptionContext";
 import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
-import { isGatedServicePath } from "@/lib/serviceAccess";
 
 /** Cosmic Astro drawer links — order matches reference menu. */
 const MENU_LINKS = [
@@ -65,7 +63,6 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const { requestService } = useSubscription();
   const showBack = location.pathname !== "/" && !drawerOpen;
 
   /** Cosmic Astro: nested → parent section; section pages → home. */
@@ -124,11 +121,7 @@ const Navbar = () => {
 
   const handleMenuNav = (path: string) => {
     setDrawerOpen(false);
-    if (isGatedServicePath(path)) {
-      requestService(path);
-    } else {
-      navigate(path);
-    }
+    navigate(path);
   };
 
   return (
@@ -166,13 +159,7 @@ const Navbar = () => {
             {!drawerOpen && (
               <button
                 type="button"
-                onClick={() => {
-                  if (user) {
-                    navigate("/my-account");
-                  } else {
-                    openLogin();
-                  }
-                }}
+                onClick={() => navigate("/my-account")}
                 className="absolute right-12 top-1/2 z-[60] -translate-y-1/2 rounded-full border border-[#AB8D60]/55 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#C7B59E] hover:border-[#AB8D60] hover:text-white sm:right-14 sm:px-3 sm:text-[11px]"
               >
                 My Profile
@@ -257,15 +244,7 @@ const Navbar = () => {
                     Logout
                   </button>
                 </>
-              ) : (
-                <button
-                  type="button"
-                  onClick={openLogin}
-                  className="cosmic-menu-btn"
-                >
-                  Login
-                </button>
-              )}
+              ) : null}
             </nav>
           </div>
         </div>

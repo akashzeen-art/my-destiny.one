@@ -12,7 +12,6 @@ import { useEffect } from "react";
 import LoadingOverlay from "./components/LoadingOverlay";
 import CosmicBackground from "./components/CosmicBackground";
 import ServiceGateRoute from "@/components/ServiceGateRoute";
-import GlobalAuthModal from "@/components/GlobalAuthModal";
 
 import Index from "./pages/Index";
 import PalmAnalysis from "./pages/PalmAnalysis";

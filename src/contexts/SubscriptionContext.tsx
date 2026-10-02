@@ -71,10 +71,9 @@ export const SubscriptionProvider: React.FC<SubscriptionProviderProps> = ({
 
   const openSubscribeModal = useCallback(
     (path?: string) => {
-      if (path) setPendingPath(path);
-      window.dispatchEvent(new CustomEvent("open-auth-modal"));
+      if (path) navigate(path);
     },
-    [],
+    [navigate],
   );
 
   const closeModal = useCallback(() => {
@@ -85,14 +84,9 @@ export const SubscriptionProvider: React.FC<SubscriptionProviderProps> = ({
 
   const requestService = useCallback(
     (path: string) => {
-      if (isActive) {
-        navigate(path);
-        return;
-      }
-      setPendingPath(path);
-      window.dispatchEvent(new CustomEvent("open-auth-modal"));
+      navigate(path);
     },
-    [isActive, navigate],
+    [navigate],
   );
 
   /** Legacy local subscribe — kept for checkout demos; Hutch login is primary. */
