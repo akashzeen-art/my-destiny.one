@@ -2280,3 +2280,16 @@
     height: 100%;
   }
 }
+
+/* Hide any third-party injected banners (Vercel toolbar, cookie consent, privacy links) */
+[id*="cookie"], [class*="cookie"],
+[id*="consent"], [class*="consent"],
+[id*="gdpr"], [class*="gdpr"],
+[id*="privacy-banner"], [class*="privacy-banner"],
+vercel-toolbar, vercel-live-feedback,
+#vercel-toolbar, #vercel-live-feedback,
+[data-vercel-toolbar] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
