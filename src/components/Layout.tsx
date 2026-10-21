@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { BRAND } from "@/lib/brand";
+import { usePageT } from "@/lib/pageTranslations";
 
-const Footer = () => (
-  <footer className="relative z-[1] mt-auto border-t border-white/10 bg-black/40 py-3.5 text-center text-[10px] text-white">
-    <div className="container mx-auto px-4">
-      <p className="mb-0 text-white/75">
-        Copyright © 2026 All rights reserved{" "}
-        <Link to="/" className="font-bold text-white hover:text-[#AB8D60]">
-          {BRAND.NAME}
-        </Link>
-      </p>
-    </div>
-  </footer>
-);
+const Footer = () => {
+  const t = usePageT();
+  return (
+    <footer className="relative z-[1] mt-auto border-t border-white/10 bg-black/40 py-3.5 text-center text-[10px] text-white">
+      <div className="container mx-auto px-4">
+        <p className="mb-0 text-white/75">
+          {t.footer.copyright}{" "}
+          <Link to="/" className="font-bold text-white hover:text-[#AB8D60]">{BRAND.NAME}</Link>
+        </p>
+      </div>
+    </footer>
+  );
+};
 
 interface LayoutProps {
   children: React.ReactNode;

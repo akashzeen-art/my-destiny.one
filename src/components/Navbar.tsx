@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
+import { Globe } from "lucide-react";
+import type { Language } from "@/i18n";
+
+const LANGUAGES: { code: Language; label: string; flag: string }[] = [
+  { code: "en", label: "EN", flag: "🇬🇧" },
+  { code: "es", label: "ES", flag: "🇪🇸" },
+];
 
 /** Cosmic Astro drawer links — order matches reference menu. */
 const MENU_LINKS = [
@@ -63,6 +71,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { language, setLanguage } = useLanguage();
   const showBack = location.pathname !== "/" && !drawerOpen;
 
   /** Cosmic Astro: nested → parent section; section pages → home. */
@@ -128,58 +137,73 @@ const Navbar = () => {
     <div className="relative z-[100]">
       <header className={cn("relative safe-area-top", drawerOpen ? "z-[70]" : "z-50")}>
         <div className="container mx-auto px-4 pt-2 pb-1">
-          <div className="relative flex items-center justify-center min-h-[56px]">
-            {showBack && (
-              <button
-                type="button"
-                onClick={handleBack}
-                className="cosmic-back-arrow"
-                aria-label="Go back"
-              >
-                <BackArrowIcon />
-              </button>
-            )}
+          <div className="relative flex items-center justify-between min-h-[56px] gap-2">
+            {/* Left slot — back arrow OR language dropdown */}
+            <div className="flex items-center w-[90px] shrink-0">
+              {showBack ? (
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="cosmic-back-arrow"
+                  aria-label="Go back"
+                >
+                  <BackArrowIcon />
+                </button>
+              ) : !drawerOpen ? (
+                <div className="relative inline-flex items-center">
+                  <Globe className="pointer-events-none absolute left-2 h-3 w-3 text-[#AB8D60] z-10" />
+                  <select
+                    value={language}
+                    onChange={(e) => setLanguage(e.target.value as Language)}
+                    className="h-8 appearance-none rounded-full border border-[#AB8D60]/40 bg-black/30 pl-6 pr-5 text-[10px] font-semibold uppercase tracking-wide text-[#C7B59E] hover:border-[#AB8D60] hover:text-white focus:outline-none cursor-pointer"
+                  >
+                    {LANGUAGES.map((l) => (
+                      <option key={l.code} value={l.code} className="bg-[#1F2628] text-white">
+                        {l.flag} {l.label}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute right-1.5 text-[#AB8D60] text-[9px]">▾</span>
+                </div>
+              ) : null}
+            </div>
 
+            {/* Center — logo */}
             {!drawerOpen && (
-              <Link
-                to="/"
-                className="relative z-10 mx-auto inline-flex max-w-[150px] shrink-0"
-              >
+              <Link to="/" className="relative z-10 mx-auto inline-flex max-w-[150px] shrink-0">
                 <img
                   src={BRAND.LOGO}
                   alt={BRAND.NAME}
                   className="h-auto w-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                 />
               </Link>
             )}
 
-            {!drawerOpen && (
+            {/* Right slot — My Profile + hamburger */}
+            <div className="flex items-center justify-end gap-1 w-[90px] shrink-0">
+              {!drawerOpen && (
+                <button
+                  type="button"
+                  onClick={() => navigate("/my-account")}
+                  className="rounded-full border border-[#AB8D60]/55 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#C7B59E] hover:border-[#AB8D60] hover:text-white sm:px-2.5 sm:text-[10px] whitespace-nowrap"
+                >
+                  My Profile
+                </button>
+              )}
               <button
                 type="button"
-                onClick={() => navigate("/my-account")}
-                className="absolute right-12 top-1/2 z-[60] -translate-y-1/2 rounded-full border border-[#AB8D60]/55 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#C7B59E] hover:border-[#AB8D60] hover:text-white sm:right-14 sm:px-3 sm:text-[11px]"
+                onClick={() => setDrawerOpen((o) => !o)}
+                className={cn(
+                  "rounded-md p-1.5 text-white hover:opacity-90 shrink-0",
+                  drawerOpen ? "fixed right-3 top-2 z-[80]" : ""
+                )}
+                aria-label={drawerOpen ? "Close menu" : "Open menu"}
+                aria-expanded={drawerOpen}
               >
-                My Profile
+                <HamburgerIcon open={drawerOpen} />
               </button>
-            )}
-
-            <button
-              type="button"
-              onClick={() => setDrawerOpen((o) => !o)}
-              className={cn(
-                "rounded-md p-2 text-white hover:opacity-90",
-                drawerOpen
-                  ? "fixed right-3 top-2 z-[80]"
-                  : "absolute right-0 top-1/2 z-[60] -translate-y-1/2"
-              )}
-              aria-label={drawerOpen ? "Close menu" : "Open menu"}
-              aria-expanded={drawerOpen}
-            >
-              <HamburgerIcon open={drawerOpen} />
-            </button>
+            </div>
           </div>
         </div>
       </header>

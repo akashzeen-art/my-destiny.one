@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { drawTarotCard, type TarotCard } from "@/lib/tarot";
 import { cn } from "@/lib/utils";
+import { usePageT } from "@/lib/pageTranslations";
 
-/** Cosmic Astro Tarot Card Reading — flip cover to reveal meaning. */
 const Tarot = () => {
+  const t = usePageT();
   const [flipped, setFlipped] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [card, setCard] = useState<TarotCard | null>(null);
@@ -34,20 +35,14 @@ const Tarot = () => {
       <section className="relative flex flex-1 flex-col pb-20 pt-1">
         <div className="container relative z-[1] mx-auto max-w-5xl px-4">
           <h1 className="cosmic-horoscope-title mb-6 sm:mb-8 md:mb-10">
-            Tarot <span>Card</span> Reading
+            {t.tarot.title} <span>{t.tarot.titleHighlight}</span> {t.tarot.titleSuffix}
           </h1>
-
           <div className="grid items-center gap-8 md:grid-cols-[minmax(0,220px)_1fr] md:gap-10 lg:gap-14">
             <div className="flex flex-col items-center">
-              <button
-                type="button"
-                className="cosmic-flip"
-                onClick={reveal}
-                aria-label={flipped ? "Revealed tarot card" : "Flip tarot card"}
-              >
+              <button type="button" className="cosmic-flip" onClick={reveal} aria-label={flipped ? "Revealed tarot card" : "Flip tarot card"}>
                 <div className={cn("cosmic-tarot", flipped && "cosmic-tarot-flipped")}>
                   <div className="cosmic-tarot-face cosmic-tarot-front">
-                    {!flipped && <span className="cosmic-guide-btn">Open</span>}
+                    {!flipped && <span className="cosmic-guide-btn">{t.tarot.open}</span>}
                     <img src="/tarot/cover.png" alt="Tarot card back" draggable={false} />
                   </div>
                   <div className="cosmic-tarot-face cosmic-tarot-back">
@@ -61,29 +56,19 @@ const Tarot = () => {
                   </div>
                 </div>
               </button>
-
               {flipped && (
                 <button type="button" onClick={drawAgain} className="cosmic-period-btn mt-5">
-                  Draw again
+                  {t.tarot.drawAgain}
                 </button>
               )}
             </div>
-
-            <div
-              className={cn(
-                "cosmic-infobox p-4 sm:p-5 transition-opacity duration-[3000ms]",
-                showInfo ? "opacity-100" : "pointer-events-none opacity-0"
-              )}
-              aria-hidden={!showInfo}
-            >
+            <div className={cn("cosmic-infobox p-4 sm:p-5 transition-opacity duration-[3000ms]", showInfo ? "opacity-100" : "pointer-events-none opacity-0")} aria-hidden={!showInfo}>
               {card && (
                 <>
                   <h2 className="cosmic-subtitle">{card.name}</h2>
                   <p className="cosmic-basic-text mt-3">{card.meaning}</p>
                   <div className="mt-5">
-                    <Link to="/talk-to-astra" className="cosmic-category-btn">
-                      Ask Astra to explain your Tarot reading
-                    </Link>
+                    <Link to="/talk-to-astra" className="cosmic-category-btn">{t.tarot.askAstra}</Link>
                   </div>
                 </>
               )}

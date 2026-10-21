@@ -1,4 +1,4 @@
-export type Language = "en" | "my";
+export type Language = "en" | "my" | "es";
 
 export interface Translations {
   // Navbar

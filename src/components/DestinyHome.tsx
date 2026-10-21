@@ -3,11 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { BRAND } from "@/lib/brand";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { isGatedServicePath } from "@/lib/serviceAccess";
+import { Globe } from "lucide-react";
+import type { Language } from "@/i18n";
 
 const LOGO = "/destiny/images/logo.png";
 
-const MENU_LINKS = [
+const MENU_LINKS_EN = [
   { label: "Horoscope", path: "/horoscope" },
   { label: "Talk to Medium", path: "/talk-to-astra" },
   { label: "About Astrology", path: "/about" },
@@ -20,7 +23,20 @@ const MENU_LINKS = [
   { label: "Downloads", path: "/downloads" },
 ] as const;
 
-const CATEGORIES = [
+const MENU_LINKS_ES = [
+  { label: "Horóscopo", path: "/horoscope" },
+  { label: "Hablar con Medium", path: "/talk-to-astra" },
+  { label: "Sobre Astrología", path: "/about" },
+  { label: "Tarot", path: "/tarot" },
+  { label: "Numerología", path: "/numerology" },
+  { label: "Interpretación de Sueños", path: "/dreams" },
+  { label: "Horóscopo Chino", path: "/chinese-horoscope" },
+  { label: "Casas Astrológicas", path: "/astrology-houses" },
+  { label: "Planetas", path: "/planets" },
+  { label: "Descargas", path: "/downloads" },
+] as const;
+
+const CATEGORIES_EN = [
   { label: "Horoscope", path: "/horoscope", image: 1 },
   { label: "Talk to Medium", path: "/talk-to-astra", image: 2 },
   { label: "Astrology", path: "/about", image: 3 },
@@ -31,6 +47,29 @@ const CATEGORIES = [
   { label: "About Astrology Houses", path: "/astrology-houses", image: 8 },
   { label: "Planets", path: "/planets", image: 9 },
 ] as const;
+
+const CATEGORIES_ES = [
+  { label: "Horóscopo", path: "/horoscope", image: 1 },
+  { label: "Hablar con Medium", path: "/talk-to-astra", image: 2 },
+  { label: "Astrología", path: "/about", image: 3 },
+  { label: "Tarot", path: "/tarot", image: 4 },
+  { label: "Numerología", path: "/numerology", image: 5 },
+  { label: "Interpretación de Sueños", path: "/dreams", image: 6 },
+  { label: "Horóscopo Chino", path: "/chinese-horoscope", image: 7 },
+  { label: "Casas Astrológicas", path: "/astrology-houses", image: 8 },
+  { label: "Planetas", path: "/planets", image: 9 },
+] as const;
+
+const LANG_LABELS: Record<Language, { hero: string; profile: string }> = {
+  en: { hero: "Discover the hidden mysteries of your life by the stars", profile: "My Profile" },
+  es: { hero: "Descubre los misterios ocultos de tu vida a través de las estrellas", profile: "Mi Perfil" },
+  my: { hero: "Discover the hidden mysteries of your life by the stars", profile: "My Profile" },
+};
+
+const LANGUAGES: { code: Language; label: string; flag: string }[] = [
+  { code: "en", label: "EN", flag: "🇬🇧" },
+  { code: "es", label: "ES", flag: "🇪🇸" },
+];
 
 const DESTINY_CSS = [
   "/destiny/css/bootstrap.min.css",
@@ -121,6 +160,11 @@ const DestinyHome = () => {
   const navigate = useNavigate();
   const { requestService } = useSubscription();
   const { isActive } = useAuth();
+  const { language, setLanguage } = useLanguage();
+
+  const MENU_LINKS = language === "es" ? MENU_LINKS_ES : MENU_LINKS_EN;
+  const CATEGORIES = language === "es" ? CATEGORIES_ES : CATEGORIES_EN;
+  const labels = LANG_LABELS[language] ?? LANG_LABELS.en;
 
   const go = useCallback(
     (path: string) => {
@@ -155,20 +199,31 @@ const DestinyHome = () => {
         </nav>
 
         <nav className="navbar navbar-dark bg-dark">
-          <div className="container-fluid destiny-nav-actions">
+          <div className="destiny-nav-actions">
+            {!menuOpen && (
+              <div className="relative inline-flex items-center mr-2">
+                <Globe className="pointer-events-none absolute left-2 h-3 w-3 text-[#AB8D60] z-10" />
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value as Language)}
+                  className="h-8 appearance-none rounded-full border border-[#AB8D60]/40 bg-black/40 pl-6 pr-5 text-[10px] font-semibold uppercase tracking-wide text-[#C7B59E] hover:border-[#AB8D60] focus:outline-none cursor-pointer"
+                >
+                  {LANGUAGES.map((l) => (
+                    <option key={l.code} value={l.code} className="bg-[#1F2628] text-white">
+                      {l.flag} {l.label}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-1.5 text-[#AB8D60] text-[9px]">▾</span>
+              </div>
+            )}
             {!menuOpen && (
               <button
                 type="button"
                 className="destiny-profile-btn"
-                onClick={() => {
-                  if (isActive) {
-                    navigate("/my-account");
-                  } else {
-                    window.dispatchEvent(new CustomEvent("open-auth-modal"));
-                  }
-                }}
+                onClick={() => navigate("/my-account")}
               >
-                My Profile
+                {labels.profile}
               </button>
             )}
             <button
@@ -217,16 +272,9 @@ const DestinyHome = () => {
           <button
             type="button"
             className="menu_button"
-            onClick={() => {
-              setMenuOpen(false);
-              if (isActive) {
-                navigate("/my-account");
-              } else {
-                window.dispatchEvent(new CustomEvent("open-auth-modal"));
-              }
-            }}
+            onClick={() => { setMenuOpen(false); navigate("/my-account"); }}
           >
-            My Profile
+            {labels.profile}
           </button>
         </div>
       </div>
@@ -236,7 +284,7 @@ const DestinyHome = () => {
           <div className="row relative">
             <div className="col-12">
               <div className="landing-title">
-                Discover the hidden mysteries of your life by the stars
+                {labels.hero}
               </div>
             </div>
           </div>
@@ -289,7 +337,7 @@ const DestinyHome = () => {
                       <div />
                     </div>
                   </div>
-                  {item.label}
+                {item.label}
                 </button>
               </div>
             ))}

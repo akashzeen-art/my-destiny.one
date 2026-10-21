@@ -307,14 +307,17 @@ Replace ALL placeholder values with REAL analysis based on the actual birth data
   return parseJsonFromContent(content);
 }
 
-export async function interpretDreamWithOpenAI(dream: string): Promise<{
+export async function interpretDreamWithOpenAI(dream: string, language = "en"): Promise<{
   title: string;
   summary: string;
   symbols: string[];
   guidance: string;
   emotionalTone: string;
 }> {
-  const prompt = `You are Astra, a warm Cosmic Astro dream guide.
+  const langInstruction = language === "es"
+    ? "Respond ONLY in Spanish. All keys and values must be in Spanish."
+    : "Respond in English.";
+  const prompt = `You are Astra, a warm Cosmic Astro dream guide. ${langInstruction}
 Interpret this dream in an empowering, mystical but practical tone.
 Dream: """${dream.trim()}"""
 
@@ -339,8 +342,13 @@ emotionalTone (one short phrase).`;
 export async function askAstraWithOpenAI(
   message: string,
   history: Array<{ role: "user" | "assistant"; content: string }> = [],
+  language = "en",
 ): Promise<string> {
+  const langInstruction = language === "es"
+    ? "Respond ONLY in Spanish. All your answers must be in Spanish."
+    : "Respond in English.";
   const system = `You are Astra, the guide for AI Cosmic Astro.
+${langInstruction}
 Speak warmly, clearly, and mystically — like a wise friend under the stars.
 Keep answers concise (2-5 short paragraphs). Cover astrology, tarot, numerology,
 dreams, planets, and houses when asked. Never claim medical, legal, or financial certainty.
