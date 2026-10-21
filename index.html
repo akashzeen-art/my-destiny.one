@@ -24,5 +24,24 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Remove any injected cookie consent / privacy banners
+      function removeInjectedBanners() {
+        const selectors = [
+          '[id*="cookie"]','[class*="cookie"]',
+          '[id*="consent"]','[class*="consent"]',
+          '[id*="privacy"]','[class*="privacy"]',
+          '[id*="banner"]','[class*="banner"]',
+          '[id*="gdpr"]','[class*="gdpr"]',
+          'vercel-toolbar','vercel-live-feedback',
+        ];
+        selectors.forEach(function(sel) {
+          document.querySelectorAll(sel).forEach(function(el) { el.remove(); });
+        });
+      }
+      document.addEventListener('DOMContentLoaded', removeInjectedBanners);
+      setTimeout(removeInjectedBanners, 1000);
+      setTimeout(removeInjectedBanners, 3000);
+    </script>
   </body>
 </html>
